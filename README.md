@@ -34,20 +34,33 @@ It is intended for internal/admin review of submitted feedback.
 - Next.js (Admin Dashboard)
 
 ---
-├── backend/                # Express API + database + AI logic
+├── backend/      
+
 │   ├── index.js
+
 │   ├── db.js
+
 │   ├── llm.js
+
 │   └── package.json
+
 │
-├── user-dashboard/         # User-facing Next.js app
+
+├── user-dashboard/     
+
 │   └── pages/index.js
+
 │
-├── admin-dashboard/        # Admin-facing Next.js app
+├── admin-dashboard/    
+
 │   └── pages/index.js
+
 │
+
 ├── README.md
+
 ├── package.json
+
 └── package-lock.json
 
 ---
