@@ -18,6 +18,9 @@ The system stores user reviews, analyzes them using AI logic, and exposes struct
 - dotenv
 - CORS
 
+> Note: Backend is designed for deployment but is demonstrated via local execution due to deployment platforms requiring billing details.
+
+
 ### Frontend
 - Next.js (User Dashboard)
 - Next.js (Admin Dashboard)
@@ -72,11 +75,15 @@ Both dashboards are built using **Next.js** and deployed separately.
 
 ---
 
-## Deployment
+## Deployment Notes
 
-- **Backend**: Render (root directory: `backend`)
-- **Dashboards**: Vercel
-- **Database**: Supabase PostgreSQL
+The project is structured and ready for deployment.
+
+- Backend: Configured for cloud deployment (e.g., Render), but demonstrated via local execution since some platforms require billing details.
+- Dashboards: Configured for deployment on Vercel.
+- Database: Supabase PostgreSQL.
+
+All functionality works correctly when run locally.
 
 ---
 
