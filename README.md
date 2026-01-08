@@ -24,86 +24,72 @@ The system stores user reviews, analyzes them using AI logic, and exposes struct
 
 ---
 ├── backend/ # Express API + database + AI logic
+
 ├── user-dashboard/ # User-facing Next.js app
+
 ├── admin-dashboard/ # Admin-facing Next.js app
+
 ├── README.md
+
 ├── DEPLOYMENT.md
+
 ├── DEPLOYMENT_CHECKLIST.md
 
-
 ---
 
-## Backend Features
+## Backend
 
-- Health check endpoint
-- PostgreSQL connectivity
-- Review submission API
-- AI-based review analysis (with safe fallback if API key is missing)
-- Graceful error handling
+**Tech stack**
+- Node.js
+- Express
+- PostgreSQL (Supabase)
+- Render (deployment)
 
-### Key Endpoints
+**Key endpoints**
+- `GET /` – Health check
+- `GET /db-test` – Database connectivity test
+- `POST /api/review` – Submit a review
+- `GET /api/reviews` – Fetch all reviews
 
-- `GET /` → Backend health check  
-- `GET /db-test` → Database connectivity test  
-- `POST /api/review` → Submit a review with rating  
-- `GET /api/reviews` → Fetch all reviews (admin view)
+**Environment variables (Render)**
 
----
-
-## Database Schema
-
-The backend expects a PostgreSQL table named `reviews`:
-
-```sql
-CREATE TABLE reviews (
-  id SERIAL PRIMARY KEY,
-  rating INTEGER NOT NULL,
-  review TEXT NOT NULL,
-  ai_response TEXT,
-  ai_summary TEXT,
-  ai_action VARCHAR(20),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-Environment Variables (Backend)
-
-The backend requires the following environment variables:
-
-DATABASE_URL=postgresql://...
+DATABASE_URL=your_postgres_connection_string
 PORT=4000
-OPENAI_API_KEY=optional
 
+---
 
-If OPENAI_API_KEY is not provided, the system uses a mocked AI response.
-Deployment Notes
+## Dashboards
 
-The project is structured as a monorepo
+Both dashboards are built using **Next.js** and deployed separately.
 
-Backend is configured for deployment on Render
+### User Dashboard
+- Submits reviews to backend
+- Shows AI feedback response
 
-Dashboards are configured for deployment on Vercel
+### Admin Dashboard
+- Displays all reviews
+- Read-only view for monitoring
 
-Deployment was attempted, but Render requires billing details for Web Services.
-All functionality works correctly when run locally.
+---
 
-cd backend
-npm install
-node index.js
-Backend runs on http://localhost:4000
+## Deployment
 
-Submission Note
-This repository is submitted as part of an internship/technical assessment.
-The focus is on:
+- **Backend**: Render (root directory: `backend`)
+- **Dashboards**: Vercel
+- **Database**: Supabase PostgreSQL
 
-Correct architecture
+---
 
-API design
+## Notes
 
-Database integration
+- AI logic includes graceful fallbacks if API keys are missing
+- Backend handles errors without crashing
+- Clean monorepo structure used intentionally
 
-Error handling
+---
 
-Clean project structure
+## Author
 
+Misba Yadgiri
 
-## Project Structure
 
